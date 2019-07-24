@@ -1,0 +1,32 @@
+-- Вопрос: В БД есть таблица Customers с клиентами вида CustomerId, RegistrationDateTime, Name и таблица Purchases с покупками клиентов вида CustomerId, PurchaseDatetime, ProductName.
+-- Напишите SQL запрос, который выберет имена клиентов, которые когда-либо покупали молоко, но никогда не покупали сметану. 
+
+CREATE TABLE customers (
+  customerId INT NOT NULL,
+  registrationDate INT NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  PRIMARY KEY (customerId)
+);
+
+INSERT INTO customers 
+    (customerId, registrationDate, name)
+  VALUES
+    (1, 1, 'vasya'),
+    (2, 2, 'valentin'),
+    (3, 3, 'nikolay');
+
+CREATE TABLE purchases (
+  customerId INT NOT NULL,
+  purchaseDateTime INT NOT NULL,
+  productName VARCHAR(255) NOT NULL
+);
+
+   
+   
+INSERT INTO purchases 
+    (customerId, purchaseDateTime, productName)
+  VALUES
+    (3, 1, 'moloko'),
+    (2, 2, 'moloko'),
+    (1, 3, 'hleb'),
+    (1, 4, 'smetana');
